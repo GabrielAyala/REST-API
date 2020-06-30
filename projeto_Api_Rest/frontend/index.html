@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" type="text/css" href="style.css">    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"%22%3E></script>
+    <script>
+
+        function salvar(){
+            var nome = $('#nomeProduto').val();
+            $.ajax({            
+                dataType:'JSON',
+                type:'POST',               
+                contentType: 'application/json',
+                data: JSON.stringify({
+                nome: nome               
+             }),
+                url:"http://localhost:8000/produtos",
+                success:function(retorno){
+
+                    console.log(retorno);
+                },
+                error:function(retorno){
+                    
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul class="menu">
+                <li><a href="">Cadastro</a></li>
+                <li><a href="consulta.html">Consulta</a></li>
+            </ul>
+        </nav>
+        <section>
+            <h1>Cadastro de Produtos</h1>
+            <hr><br><br>
+ 
+           
+            <input type="submit" onclick="salvar();" value="Salvar" class="btn">     
+            <br><br>
+            
+            Nome:<br>
+            <input type="text" id="nomeProduto" class="campo"><br>
+            
+        </section>
+    </div>
+</body>
+</html>
